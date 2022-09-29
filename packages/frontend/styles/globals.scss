@@ -1,0 +1,86 @@
+@import "../../../node_modules/modern-normalize/modern-normalize.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  font-family: Roboto, sans-serif;
+  background-color: #fff;
+  height: 100%;
+}
+
+#__next {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px 1fr;
+  grid-template-areas:
+    "nav"
+    "body";
+  min-height: 100%;
+}
+
+nav {
+  grid-area: nav;
+}
+
+main {
+  grid-area: body;
+  min-height: calc(100vh - 60px - 2rem);
+  z-index: 1;
+}
+
+.remote-video,
+.local-video {
+  position: relative;
+  &::after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px 10px;
+    width: min-content;
+    background-color: black;
+    color: white;
+    border-radius: 10px 0 10px 0;
+    content: attr(data-username);
+    height: min-content;
+    line-height: 1.1em;
+    vertical-align: middle;
+    text-align: center;
+    z-index: 2;
+    text-transform: capitalize;
+  }
+}
+
+.local-video {
+  position: sticky;
+  top: 100%;
+  left: 100%;
+}
+
+.ribbon {
+  @apply bg-gray-900;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  svg {
+    position: absolute;
+    left: 65%;
+    top: 20%;
+    transform-origin: top center;
+    transform: rotate(45deg);
+  }
+}
+
+.footer {
+  .uppercase {
+    font-variant: small-caps;
+  }
+}
+
+video {
+  background-color: black;
+}
